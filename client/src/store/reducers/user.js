@@ -1,4 +1,4 @@
-import {LOGIN, LOGOUT} from '../actions/constants'
+import {LOGIN, LOGOUT} from '../actions/constants';
 
 const userReducer = (state = {}, {type, payload}) => {
     switch (type) {
