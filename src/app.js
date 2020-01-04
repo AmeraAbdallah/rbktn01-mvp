@@ -1,5 +1,6 @@
 const express = require('express');
 const userRouter = require('./routers/user');
+const todoRouter = require('./routers/todo');
 const path = require('path');
 
 const publicPath = path.join(__dirname, '..', 'client', 'build');
@@ -18,7 +19,7 @@ app.use(function(req, res, next) {
     next();
 });
 app.use('/api/user', userRouter);
-
+app.use('/api/todo', todoRouter);
 
 
 app.get('*', (req, res) => {
