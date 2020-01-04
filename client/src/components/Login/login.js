@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { login } from '../../store/actions/user';
 
-export class index extends Component {
+export class Login extends Component {
     constructor(props){
         super(props);
         this.state = {
@@ -54,4 +54,4 @@ const mapDispatchToProps = (dispatch) => ({
     login: (user) => dispatch(login(user))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(index)
+export default connect(mapStateToProps, mapDispatchToProps)(Login)

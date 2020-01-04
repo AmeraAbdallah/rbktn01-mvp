@@ -4,8 +4,8 @@ import { Route, Switch, BrowserRouter as Router} from 'react-router-dom'
 import PrivateRoute from './PrivateRoute'
 import PublicRoute from './PublicRoute'
 
-import Year from './../components/Year'
-import Login from './../components/Login'
+import Home from './../components/Home/home'
+import Login from './../components/Login/login'
 
 const AppRouter = () => {
     return (
@@ -13,7 +13,7 @@ const AppRouter = () => {
         <div>
           <Switch>
             <PublicRoute path = '/' component = {Login} exact/>
-            <PrivateRoute path = '/home' component = {Year}/>
+            <PrivateRoute path = '/home' component = {Home}/>
             <Route>
               <div>not found</div>
             </Route>
