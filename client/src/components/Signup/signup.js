@@ -1,17 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { login } from '../../store/actions/user';
-import { Link } from 'react-router-dom';
+import { signup } from '../../store/actions/user';
 
-export class Login extends Component {
+export class Signup extends Component {
     constructor(props){
         super(props);
         this.state = {
             email: '',
-            password: ''
+            password: '',
+            name: ''
         }
         this.handleEmailChange = this.handleEmailChange.bind(this);
         this.handlePasswordChange = this.handlePasswordChange.bind(this);
+        this.handleNameChange = this.handleNameChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
@@ -26,11 +27,17 @@ export class Login extends Component {
 
     }
 
+    handleNameChange(e){
+        let name = e.target.value;
+        this.setState(() => ({name}));
+    }
+
     handleSubmit(e){
         e.preventDefault();
-        this.props.login({
+        this.props.signup({
             email: this.state.email,
-            password: this.state.password
+            password: this.state.password,
+            name: this.state.name
         })
     }
 
@@ -38,11 +45,11 @@ export class Login extends Component {
         return (
             <div>
                 <form onSubmit = {this.handleSubmit}>
+                    <input type = 'text' placeholder = 'Name' value = {this.state.name} onChange = {this.handleNameChange} />
                     <input type = 'text' placeholder = 'Email' value = {this.state.email} onChange = {this.handleEmailChange}/>
                     <input type = 'password' placeholder = 'Password' value = {this.state.password} onChange = {this.handlePasswordChange}/>
                     <button>Submit</button>
                 </form>
-               <Link to = '/signup'> sign up</Link>
             </div>
         )
     }
@@ -53,7 +60,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-    login: (user) => dispatch(login(user))
+    signup: (user) => dispatch(signup(user))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login)
+export default connect(mapStateToProps, mapDispatchToProps)(Signup)
