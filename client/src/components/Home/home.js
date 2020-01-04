@@ -3,9 +3,14 @@ import { connect } from 'react-redux';
 
 import TodoForm from './../TodoForm/todoForm';
 import Header from './../Header/header';
+import { getTodos } from './../../store/actions/todo';
 
 export class home extends Component {
   
+  componentDidMount(){
+    this.props.getTodos();
+  }
+
   render() {
     console.log(this.props.todos)
     return (
@@ -26,9 +31,9 @@ const mapStateToProps = (state) => ({
   todos: state.todos
 })
 
-const mapDispatchToProps = {
-  
-}
+const mapDispatchToProps = (dispatch) => ({
+  getTodos: () => dispatch(getTodos())
+})
 
 export default connect(mapStateToProps, mapDispatchToProps)(home)
 

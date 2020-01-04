@@ -15,7 +15,16 @@ router.post('/', auth, async (req, res) => {
         await todo.save();
         res.status(201).json({todo});
     }catch(err){
-        res.status(400).send(err);
+        res.status(400).send();
+    }
+});
+
+router.get('/', auth, async (req, res) => {
+    try{
+        let todos = await Todo.find({user: req.user._id});
+        res.status(200).json({todos});
+    }catch(err){
+        res.status(400).send();
     }
 });
 
